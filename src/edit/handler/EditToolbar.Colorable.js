@@ -30,6 +30,8 @@ L.EditToolbar.Colorable = L.Handler.extend({
 				color: 'rgba(254,87,161,0.2)', //Hot pink all the things! 
 				showAlpha: true,
 				showPalette: true,
+				showInput: true,
+				preferredFormat: "hex",
 				palette: [ ],
 				change: function(color) {
 					var hexColor = color.toHexString(); // #ff0000

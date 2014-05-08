@@ -211,6 +211,14 @@
 	background-position: -240px -2px;
 }
 
+.leaflet-draw-toolbar .leaflet-draw-edit-styleable {
+	background-position: -272px -2px;
+}
+
+.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-edit-styleable {
+	background-position: -270px -1px;
+}
+
 /* ================================================================== */
 /* Drawing styles
 /* ================================================================== */

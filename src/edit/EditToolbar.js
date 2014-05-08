@@ -11,6 +11,7 @@ L.EditToolbar = L.Toolbar.extend({
 		},
 		remove: {},
 		colorable: false, /* REQUIRES Jquery and Spectrum.js*/
+		styleable: false,
 		featureGroup: null /* REQUIRED! TODO: perhaps if not set then all layers on the map are selectable? */
 	},
 
@@ -29,6 +30,10 @@ L.EditToolbar = L.Toolbar.extend({
 
 		if (options.colorable) {
 			options.colorable = L.extend({}, this.options.colorable, options.colorable);
+		}
+
+		if (options.styleable) {
+			options.styleable = L.extend({}, this.options.styleable, options.styleable);
 		}
 
 		this._toolbarClass = 'leaflet-draw-edit';
@@ -60,12 +65,19 @@ L.EditToolbar = L.Toolbar.extend({
 				handler: new L.EditToolbar.Colorable(map, {
 					featureGroup: featureGroup
 				}),
-				title: L.drawLocal.edit.toolbar.buttons.remove
+				title: L.drawLocal.edit.toolbar.buttons.colorable
+			},
+			{
+				enabled: this.options.styleable,
+				handler: new L.EditToolbar.Styleable(map, {
+					featureGroup: featureGroup
+				}),
+				title: L.drawLocal.edit.toolbar.buttons.styleable
 			}
 		];
 	},
 
-	getActions: function () {
+	getActions: function (handler) {
 		return [
 			{
 				title: L.drawLocal.edit.toolbar.actions.save.title,
@@ -152,6 +164,10 @@ L.EditToolbar = L.Toolbar.extend({
 		
 		if (this.options.colorable) {
 			button = this._modes[L.EditToolbar.Colorable.TYPE].button;
+		}
+		
+		if (this.options.styleable) {
+			button = this._modes[L.EditToolbar.Styleable.TYPE].button;
 		}
 	}
 });

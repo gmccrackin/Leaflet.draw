@@ -118,7 +118,7 @@ L.Toolbar = L.Class.extend({
 
 	_createButton: function (options) {
 
-		if ( options.type === 'colorable'){
+		if ( options.type === 'colorable') {
 			var link = L.DomUtil.create('input', options.className || '', options.container);
 			link.href = '#';
 			link.type = 'color';
